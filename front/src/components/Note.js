@@ -13,14 +13,16 @@ import Card from "./cards/Card";
 
 
 function ParentNote({Notelists}) {
+  console.log(Notelists)
   return (
+    
     <section>
     <div className='child-note-list'>
           Notes
           <ul>
           {
             Notelists.map((item,index) =>(
-              <Link to={`/note/${item._id}`}>
+              <Link to={`/note/${item._id}` } key = {index}>
               <li key = {item._id} ><Card data={item} index ={index}/> </li>
               </Link>
             ))
@@ -69,8 +71,6 @@ const Note = ({ setisLogin }) => {
                 const res = await axios.get(
                   `http://localhost:5000/route/note/${noteId}`,
                 );
-                
-    
                 setNotelists(prevData => [...prevData, res.data])
                 
                 
@@ -80,7 +80,7 @@ const Note = ({ setisLogin }) => {
                 // setdetails(NoteDetails,console.log(details));
                 
               });
-              setLoading(!loading)
+              setLoading(false)
               console.log(loading)
 
               // console.log(Notelists.ata);
@@ -114,7 +114,7 @@ const Note = ({ setisLogin }) => {
       // setNotelists(fetch_details())
       // return;
     },
-    [],
+    [loading],
   );
 
   
@@ -158,7 +158,7 @@ const Note = ({ setisLogin }) => {
         <Route path='/edit/:id' exact element={<EditNote />} />
         <Route path='/note/:id' exact element={<NoteScreen  />}  />
       </Routes>
-      <AddNote />
+      <AddNote setNotelists = {setNotelists}/>
       <section>
         <Link
           to='/'

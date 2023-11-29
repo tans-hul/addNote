@@ -21,13 +21,14 @@ const NoteScreen = () => {
             console.log(dt,"inside use Effect")
             const getData = async(id) =>{
                 const isv = await axios.get(`http://localhost:5000/route/note/${id}`)
-                console.log(isv.data)
+                // console.log(isv.data)
                 var M = await isv.data.children;
                 if (!M) {
                     setError("no Notes Found");
                     setLoading(false);
                     return;
                 }
+                
                 M.map(async (noteId) => {
                     const res = await axios.get(
                         `http://localhost:5000/route/note/${noteId}`,
@@ -38,10 +39,12 @@ const NoteScreen = () => {
                     setLoading(false);
                 })
             }
+            
             getData(id);
         }
 
     ,[id])
+    console.log(dt)
     if(Loading) return <div> Loading...
     <AddNoteChild id = {id} />
     </div>
@@ -56,7 +59,7 @@ const NoteScreen = () => {
                 <ul>
                     {
                         dt.map((item, index) => (
-                            <Link to={`/note/${item._id}`}>
+                            <Link to={`/note/${item._id}`} key = {item._id}>
                                 <li key={item._id} ><Card data={item} index={index} /> </li>
                             </Link>
                         ))

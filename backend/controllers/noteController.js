@@ -155,7 +155,7 @@ export const noteControl = {
       if(!c)return res.status(302).json({message:"child not found"})
       console.log(c);
       parent.children.push(c._id);
-      awaitparent.save()
+      await parent.save()
       return res.status(200).json(parent);
       } catch (error) {
         res.status(400).json(error);
