@@ -1,0 +1,25 @@
+// app.js (or server.js)
+import express from 'express';
+import mongoose from 'mongoose';
+import mainRouter from './routes/index.js';
+import cors from 'cors'
+const app = express();
+
+// Connect to MongoDB
+mongoose.connect('mongodb://127.0.0.1:27017/yourDBName', {
+  useNewUrlParser: true,
+  useUnifiedTopology: true,
+});
+app.use(cors())
+
+// Middleware
+app.use(express.json());
+app.use('/route', mainRouter);
+
+
+// Start the server
+const PORT = process.env.PORT || 5000;
+app.listen(PORT, () => {
+  console.log(`Server started on port ${PORT}`);
+});
+  

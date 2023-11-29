@@ -1,0 +1,122 @@
+.btns {
+  height: 1.5rem;
+  width: 1.5rem;
+  cursor: pointer;
+  display: inline-block;
+  padding: 0.1rem;
+}
+
+.edit-btn {
+  margin-right: 0.25rem;
+}
+
+.delete-btn {
+  color: rgba(220, 40, 70, 0.85);
+}
+
+.delete-btn:hover {
+  color: rgba(220, 40, 70, 1);
+
+}
+
+.card-wrapper {
+  width: auto;
+  height: 30vh;
+  border-radius: 0.5rem;
+  box-shadow: 0 0 1.5rem rgba(0, 0, 0, 0.2);
+  display: flex;
+  flex-direction: column;
+  margin: 0.5rem 0.5rem 1rem 0;
+}
+
+.card-wrapper p {
+  margin-left: 0.25rem;
+}
+
+.card-top {
+  width: 100%;
+  height: 2%;
+  border-top-left-radius: 0.5rem;
+  border-top-right-radius: 0.5rem;
+}
+
+.task-holder {
+  width: auto;
+  height: 98%;
+  padding-inline: 2rem;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+}
+
+.card-header {
+  margin-bottom: 10px;
+  display: inline-block;
+  width: inherit;
+  padding: 0.25rem 0;
+  font-size: 1.6rem;
+  font-weight: 500;
+  text-align: center;
+}
+
+.task-container {
+  height: 20vh;
+  width: 100%;
+  display: flex;
+  justify-content: space-evenly;
+  flex-wrap: wrap;
+  background-color: #F6F7F8;
+  padding: 40px 50px;
+  overflow-y: scroll;
+}
+
+.task-container::-webkit-scrollbar {
+  visibility: hidden;
+}
+
+@media screen and (max-width: 878px) {
+  .card-wrapper {
+    width: 40%;
+    height: 40vh;
+  }
+
+  .card-wrapper p {
+    font-size: 1.2rem;
+  }
+}
+
+@media screen and (max-width: 678px) {
+  .card-wrapper {
+    width: 45%;
+    height: 36vh;
+  }
+
+  .btns {
+    height: 2rem;
+    width: 2rem;
+  }
+}
+
+@media screen and (min-height: 1000px) {
+  .card-wrapper {
+    height: 23vh;
+  }
+}
+
+@media screen and (max-width: 538px) {
+  .card-wrapper {
+    width: 77%;
+    height: 45vh;
+  }
+}
+
+@media screen and (max-width: 420px) {
+  .card-wrapper {
+    height: 35vh;
+  }
+
+  .task-container {
+    padding-left: 20px;
+    padding-right: 20px;
+  }
+}

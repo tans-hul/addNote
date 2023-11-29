@@ -1,0 +1,16 @@
+.child-note-list ul{
+    display: inline-flex;
+    justify-content: space-around;
+    word-wrap: normal;
+    flex-wrap: wrap;
+    /* flex-wrap: wrap; */
+}
+.child-note-list li{
+    display: flex;
+    padding: 2rem;
+    justify-content: space-around;
+    /* background-color: beige; */
+ 
+    
+    
+}
