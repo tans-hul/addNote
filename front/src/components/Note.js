@@ -154,9 +154,9 @@ const Note = ({ setisLogin }) => {
         </div>
       </section> */}
       <Routes>
-        <Route path = '/' element = {<ParentNote Notelists={Notelists}/>}/>
-        <Route path='/edit/:id' element={<EditNote />} />
-        <Route path='/note/:id' element={<NoteScreen  />}  />
+        <Route path = '/' exact element = {<ParentNote Notelists={Notelists}/>}/>
+        <Route path='/edit/:id' exact element={<EditNote />} />
+        <Route path='/note/:id' exact element={<NoteScreen  />}  />
       </Routes>
       <AddNote />
       <section>

@@ -17,6 +17,8 @@ const NoteScreen = () => {
         () => {
             // setdt([])
             // e.preventDefault()
+            setdt([])
+            console.log(dt,"inside use Effect")
             const getData = async(id) =>{
                 const isv = await axios.get(`http://localhost:5000/route/note/${id}`)
                 console.log(isv.data)
@@ -39,7 +41,7 @@ const NoteScreen = () => {
             getData(id);
         }
 
-    ,[])
+    ,[id])
     if(Loading) return <div> Loading...
     <AddNoteChild id = {id} />
     </div>
