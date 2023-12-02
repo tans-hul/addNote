@@ -4,7 +4,7 @@ import jwt from "jsonwebtoken";
 
 
 export const auth = async(req,res,next)=>{
-    console.log("user")
+    // console.log("user")
     try {
         const token = req.header("Authorization")
         if(!token)  return res.status(400).json({message: "Invalid Auth"})
@@ -14,7 +14,7 @@ export const auth = async(req,res,next)=>{
             if(err) return res.status(400).json({
                 message:"Auth not valid",
             })
-            console.log(user)
+            // console.log(user)
 
             res.user = user
   

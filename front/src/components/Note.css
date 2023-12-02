@@ -3,6 +3,7 @@
     justify-content: space-around;
     word-wrap: normal;
     flex-wrap: wrap;
+    padding-inline-start: 0px;
     /* flex-wrap: wrap; */
 }
 .child-note-list li{
@@ -13,4 +14,72 @@
  
     
     
+}
+.home{
+    background:rgba(241, 240, 240, 0.4);
+    height: calc(100vh);
+    width: calc(100vw);
+    position: relative;
+    margin-top:7.8vh;
+    /* top:30px; */
+    /* left:30px; */
+}
+
+h1{
+    margin: 0;
+}
+
+.logoutbtn{
+    position: fixed;
+    top: 10px;
+    right: 25px;
+    background-color: #7b57ff;
+  transition-duration: .2s;
+  padding: 0.5rem;
+  border: none;
+  color: rgb(241, 241, 241);
+  cursor: pointer;
+  font-weight: 600;
+  border-radius: 20px;
+  text-decoration:none;
+}
+
+.plusbtn{
+border: none;
+position: fixed;
+bottom: 2vh;
+right: 2vh;
+
+}
+.nav{
+
+    position: fixed;
+    top: 0;
+    width:calc(100vw);
+    height: 7vh;
+    display: flex;
+    background-color: rgba(195, 166, 166, 0.3);
+    backdrop-filter: blur(10px);
+    box-shadow: 0 0 6px 3px rgba(0, 0, 0, 0.3);
+    align-items: center;
+
+}
+
+.nav-heading{
+    font-family: 'Poppins', sans-serif;
+    padding: 1rem;
+}
+
+.tree{
+    cursor:pointer;
+    transition-duration: .2s;
+    padding: 0.4rem  1rem 0.4rem 1rem;
+    border: solid;
+    border-width: 2px;
+    border-color: grey;
+    color: grey;
+    text-decoration: underline;
+    cursor: pointer;
+    font-weight: 600;
+    border-radius: 20px;
 }

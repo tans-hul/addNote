@@ -9,7 +9,7 @@ userRouter.post('/signin',userControl.signin)
 userRouter.get('/verify',userControl.verifiedUser)
 userRouter.put('/addnote',userControl.pushNotes);
 userRouter.get('/userinfo',auth,userControl.getUser)
-
+userRouter.put('/updateUser',auth,userControl.updateUser)
 // userRouter.get('/verify', aut)
 export default userRouter;
 // userRouter.get('/g')

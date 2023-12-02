@@ -91,6 +91,18 @@ await parent_u.save()
         
     }
     
+},
+updateUser:async (req,res)=>{
+    try {
+    
+        const id = res.user.id;
+        const user = await User.findByIdAndUpdate(id,req.body);
+        await user.save();
+        res.send(user);
+    } catch (error) {
+        return res.send(error)
+    }
+
 }
 ,
 getUser: async (req,res)=>{

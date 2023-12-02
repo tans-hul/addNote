@@ -8,7 +8,6 @@ import { useParams, Link } from 'react-router-dom'
 const NoteScreen = () => {
 
     const { id } = useParams();
-
     console.log(id)
     const [dt, setdt] = useState([])
     const [Loading, setLoading] = useState(true);
@@ -17,7 +16,6 @@ const NoteScreen = () => {
         () => {
             // setdt([])
             // e.preventDefault()
-            setdt([])
             console.log(dt,"inside use Effect")
             const getData = async(id) =>{
                 const isv = await axios.get(`http://localhost:5000/route/note/${id}`)
@@ -28,29 +26,34 @@ const NoteScreen = () => {
                     setLoading(false);
                     return;
                 }
-                
+                setdt(()=>[])
+                    
                 M.map(async (noteId) => {
                     const res = await axios.get(
                         `http://localhost:5000/route/note/${noteId}`,
                     );
 
-
+                    
                     setdt(prevData => prevData.concat(res.data))
                     setLoading(false);
                 })
             }
             
             getData(id);
+            if(dt == []){
+                setError("empty array")
+                setLoading(false)
+            }
         }
 
-    ,[id])
+    ,[id,Loading])
     console.log(dt)
-    if(Loading) return <div> Loading...
-    <AddNoteChild id = {id} />
-    </div>
-    if(error != null) return <div>{error}
+    if(Loading) return (<div> Loading...
+    <AddNoteChild noteId = {id} />
+    </div>)
+    if(error !== null) return (<div>{error}
         <AddNoteChild noteId = {id} />
-    </div>
+    </div>)
     return (
         <section>
         
@@ -59,9 +62,9 @@ const NoteScreen = () => {
                 <ul>
                     {
                         dt.map((item, index) => (
-                            <Link to={`/note/${item._id}`} key = {item._id}>
-                                <li key={item._id} ><Card data={item} index={index} /> </li>
-                            </Link>
+                            
+                                <li key={item._id} ><Card data={item} index={index} setisInside={true} /> </li>
+                       
                         ))
                     }
                 </ul>
@@ -71,7 +74,6 @@ const NoteScreen = () => {
             </div>
             <AddNoteChild noteId={id} />
         </section>
-
     )
 }
 

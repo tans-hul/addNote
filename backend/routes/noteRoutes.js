@@ -6,12 +6,13 @@ import  { auth }  from '../middleware/auth.js';
 // import deleteNote from '../controllers/noteController.js';
 
 const router = express.Router();
-
+// router.get('/allUserNotes',auth,noteControl.getAllUserNotes)
 router.get('/all',auth,noteControl.getAllNotes);
 router.post('/addparent', auth ,noteControl.createParentNote)
-router.get('/allUserNotes',auth,noteControl.getAllUserNotes)
+
 // router.put('/addNote',noteControl.)
 // POST - Create a note
+router.get('/allNotes',auth,noteControl.notesOfaUser)
 router.put('/pushchild/:id',noteControl.pushChild)
 router.post('/:id', noteControl.createNote)
     router.get('/:id',noteControl.getSingleNote)

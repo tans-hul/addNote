@@ -1,10 +1,14 @@
 import React from 'react'
-
+import SelectDates from './SelectDates'
 
 const TreePage = () => {
   
   return (
-    <div>TreePage</div>
+    <div>
+    
+    <SelectDates/>
+  
+  </div>
   )
 }
 

@@ -1,0 +1,83 @@
+.wrapper{
+    position: fixed;
+    top: 0px;
+    height: 100%;
+    width: 100vw;
+    background-color: rgba(25, 25, 25, 0.4);
+}
+
+.wrapper-close{
+    display: none;
+}
+
+.closebtn{
+    cursor: pointer;
+}
+
+
+.add-note{
+    position: fixed;
+    top: 25vh;
+    left:40vw;
+    margin: auto;
+    max-width: 280px;
+    padding: 1rem;
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 20px 20px 30px rgba(0, 0, 0, .05);
+    font-family: 'Poppins', sans-serif;
+
+}
+.heading{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+h2{
+    margin: 0;
+}
+
+.title-main{
+    margin-top: 5px;
+    margin-bottom: 5px;
+    /* border-color: grey; */
+    border: solid grey;
+    width: 273px;
+    border-radius: 8px;
+    border-width: 2px;
+    font-size: 1.2rem;
+    padding: 0.2rem;
+}
+
+.content-area{
+    min-width: 273px;
+    max-width: 273px;
+    min-height: 25vh;
+    max-height: 25vh;
+    border-color:grey;
+    font-size: 1.2rem;
+    border-width: 2px;
+
+    border-radius:8px;
+}
+
+.addnote-btn{
+    margin-top: 2px;
+    background-color: #7b57ff;
+  transition-duration: .2s;
+  padding: 0.5rem;
+  border: none;
+  color: rgb(241, 241, 241);
+  cursor: pointer;
+  font-weight: 600;
+  border-radius: 20px;
+}
+.form-inputs{
+    margin: 0;
+    padding: 0;
+}
+
+form{
+    margin: 0;
+}
