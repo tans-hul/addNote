@@ -25,11 +25,11 @@ const Login = ({setisLogin}) => {
                 username:user.username,
                 password : user.password
             })
-            setuser({username:"", password: ""})
             setErr(res.data.message)
+            // loginSubmit()
+            setuser({username:"", password: ""})
         } catch (error) {
             error.response.data.message && setErr(error.response.data.message)
-            
         }
     }
 

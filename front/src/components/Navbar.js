@@ -2,7 +2,11 @@ import React from 'react'
 import './Note.css'
 import { Link } from "react-router-dom";
 
-const Navbar = () => {
+const Navbar = ({setisLogin}) => {
+  const logoutSubmit = async () => {
+    localStorage.clear();
+    setisLogin(false);
+  };
   return (
     <div className='nav'>
     <Link to = {'/'} style={{cursor :"pointer",all:"unset"}}>
@@ -10,7 +14,17 @@ const Navbar = () => {
         Notes
     </h1>
     </Link>
-    <Link className='tree' to='/Tree'>Tree</Link>
+    <section
+        onClick={() => {
+          logoutSubmit();
+        }}
+      >
+        <Link to="/">
+          <button className="logoutbtn">Logout</button>
+        </Link>
+      </section>
+
+    
     
 
     </div>

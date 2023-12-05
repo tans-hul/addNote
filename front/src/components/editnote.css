@@ -1,15 +1,17 @@
-.wrapper {
+.edit-wrapper {
     position: fixed;
     top: 0px;
+    left:0;
     height: 100%;
     width: 100vw;
     background-color: rgba(25, 25, 25, 0.4);
+    z-index: 99;
     display: flex;
     align-items: center;
     justify-content: center;
   }
   
-  .wrapper-close {
+  .edit-wrapper-close {
     display: none;
   }
   
@@ -17,7 +19,7 @@
     cursor: pointer;
   }
   
-  .add-note {
+  .edit-note {
     margin: auto;
     max-width: 280px;
     padding: 1rem;
@@ -27,7 +29,7 @@
     font-family: "Poppins", sans-serif;
   }
   
-  .heading {
+  .edit-heading {
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -37,7 +39,7 @@
     margin: 0;
   }
   
-  .title-main {
+  .edit-title-main {
     margin-top: 5px;
     margin-bottom: 5px;
     border: solid grey;
@@ -59,7 +61,7 @@
       border-radius:8px;
   } */
   
-  .addnote-btn {
+  .editnote-btn {
     margin-top: 2px;
     background-color: #315cfd;
     transition-duration: 0.2s;
@@ -81,20 +83,20 @@
   }
   
   @media screen and (max-width: 450px) {
-    .add-note {
+    .edit-note {
       height: fit-content;
       max-width: 90vw;
       width: 85vw;
       position: relative;
     }
   
-    .heading h2 {
+    .edit-heading h2 {
       font-size: 2rem;
     }
   }
   
   @media screen and (max-width: 450px){
-    .add-note {
+    .edit-note {
       height: fit-content;
       max-width: 90vw;
       width: 85vw;

@@ -6,7 +6,7 @@ const TreePage = () => {
   return (
     <div>
     
-    <SelectDates/>
+    
   
   </div>
   )

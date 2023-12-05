@@ -16,7 +16,7 @@ import axios from 'axios'
 // import AddNote from './components/AddNote.js';
 import Note from './components/Note.js';
 // import Note from '../../backend/models/Note.js';
-
+import  './App.css'
 // const store = createStore(rootReducer, applyMiddleware(thunk)); // Create your Redux store
 
 const App = () => {

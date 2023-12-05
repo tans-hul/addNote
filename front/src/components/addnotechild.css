@@ -1,0 +1,303 @@
+.add-note-child {
+    font-family: "Poppins";
+    height: 91vh;
+    width: 30%;
+    position: fixed;
+    padding: 3px 34px;
+    top: 8vh;
+    right: 1vh;
+    background-color: #fff;
+    color: #212121;
+    box-shadow: 0px 0px 3px rgba(0, 0, 0, 0.084), 0px 2px 3px rgba(0, 0, 0, 0.168);
+    display: flex;
+    gap: 20px;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    box-sizing: border-box;
+    border-radius: 10px;
+    z-index: 22;
+  }
+  
+  .addNoteChild-wrapper-close{
+    display: none;
+  }
+  /* 
+  .add-note-child h1 {
+    font-size: 2rem;
+  } */
+  
+  .addChild-crossbtn{
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    display: none;
+  }
+  
+  .notescreen-wrapper {
+    width: 100%;
+    height: fit-content;
+    min-height: 93vh;
+    position: absolute;
+    left: 0px;
+    background-color: #f9f9f9;
+  
+  }
+  
+  .child-note-list-child {
+    width: 70%;
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .child-note-list-child ul {
+    display: flex;
+    justify-content: space-evenly;
+    word-wrap: normal;
+    flex-wrap: wrap;
+    padding-inline-start: 0px;
+    width: 100%;
+    margin: auto;
+  }
+  
+  .child-note-list-child li {
+    display: flex;
+    align-items: center;
+    flex-direction: row;
+    padding: 2rem;
+    justify-content: space-around;
+    width: 100%;
+  }
+  
+  /* .text-area-child {
+    width: 25vw;
+    max-width: 25vw;
+    min-width: 25vw;
+    min-height: 60vh;
+    max-height: 65vh;
+    border-radius: 12px;
+    border: solid grey;
+    font-size: 1.2rem;
+  } */
+  
+  .add-note-child form{
+    width: 100%;
+  }
+  
+  .title-area-child {
+    height: 4vh;
+    margin-bottom: 5px;
+    width: 98%;
+    border-radius: 12px;
+    border: solid grey;
+  }
+  .add-note-child-btn-wrapper{
+  display: flex;
+  justify-content: center ;
+  
+  }
+  
+  .add-note-child-btn {
+    background-color: #315cfd;
+    transition: all 0.3s;
+    color: white;
+    cursor: pointer;
+    font-weight: 550;
+    border: 3px solid #315cfd;
+    border-radius: 45px;
+    z-index: 999;
+  }
+  
+  .add-note-child-btn:hover {
+    background-color: #fff;
+    color: black;
+    font-size: 1.5em;
+  }
+  
+  .plusbtn-child{
+      display: none;
+  }
+  
+  @media screen and (min-width: 878px){
+    .add-note-child-btn{
+      width: 135px;
+      height: 45px;
+      font-size: 1.2em;
+    }
+    .title-area-child{
+      font-size: 1.2rem;
+    }
+  
+    .add-note-child h1 {
+      font-size: 2rem;
+    }
+  }
+  
+  /* @media screen and (max-width: 878px){
+    .child-note-list-child ul {
+      width: 100%;
+      max-width: 100%;
+    }
+    .child-note-list-child li {
+      padding: 1rem 0 1rem 0rem;
+      flex-direction: column;
+      width: 100%;
+    }
+    .child-note-list-child {
+      width: 100%;
+    }
+    .add-note-child {
+    }
+    .plusbtn-child {
+      display: block;
+      position: fixed;
+      bottom: 2vh;
+      right: 2vh;
+      z-index: 88;
+      padding: 4px;
+      width: 60px;
+      height: 60px;
+      border-radius: 50px;
+      background-color: #fff;
+      box-shadow: 0px 0px 3px rgba(0, 0, 0, 0.084), 0px 2px 3px rgba(0, 0, 0, 0.168);
+      cursor: pointer;
+    }
+  } */
+  @media screen and (max-width: 680px){
+    .child-note-list-child li{
+      flex-direction: column;
+      padding-bottom: 0;
+    }
+  }
+  
+  @media screen and (max-width: 878px){
+    .child-note-list-child {
+      width: 100%;
+    }
+  
+    .addNoteChild-wrapper{
+      display: none;
+      position: fixed;
+      top: 0px;
+      height: 100%;
+      width: 100vw;
+      background-color: rgba(25, 25, 25, 0.4);
+      align-items: center;
+      justify-content: center;
+      }
+  
+      .plusbtn-child {
+        display: block;
+        position: fixed;
+        bottom: 2vh;
+        right: 2vh;
+        z-index: 88;
+        padding: 4px;
+        width: 60px;
+        height: 60px;
+        border-radius: 50px;
+        background-color: #fff;
+        box-shadow: 0px 0px 3px rgba(0, 0, 0, 0.084), 0px 2px 3px rgba(0, 0, 0, 0.168);
+        cursor: pointer;
+      }
+  
+  }
+  
+  
+  
+  @media screen and (max-width: 450px) {
+    .child-note-list-child {
+      width: 100%;
+    }
+  
+    .child-note-list-child ul {
+      width: 100%;
+      max-width: 100%;
+    }
+    .child-note-list-child li {
+      padding: 1rem 0 1rem 0rem;
+      flex-direction: column;
+      width: 100%;
+    }
+    .add-note-child {
+      margin: auto;
+      height: fit-content;
+      padding: 1rem;
+      width: 90%;
+      position: relative;
+      gap: 10px;
+    }
+  
+  
+    .addNoteChild-wrapper{
+    display: none;
+    position: fixed;
+    top: 0px;
+    height: 100%;
+    width: 100vw;
+    background-color: rgba(25, 25, 25, 0.4);
+    align-items: center;
+    justify-content: center;
+    }
+  
+    .title-area-child{
+      font-size: 1.2rem;
+  
+    }
+  
+    .addChild-crossbtn{
+      display: block;
+    }
+  
+    .add-note-child-btn{
+      margin-top: 2px;
+      /* padding: 0.5rem; */
+      cursor: pointer;
+      font-weight: 600;
+      border-radius: 20px;
+  
+    }
+  
+    .plusbtn-child {
+      display: block;
+      position: fixed;
+      bottom: 2vh;
+      right: 2vh;
+      z-index: 88;
+      padding: 4px;
+      width: 60px;
+      height: 60px;
+      border-radius: 50px;
+      background-color: #fff;
+      box-shadow: 0px 0px 3px rgba(0, 0, 0, 0.084), 0px 2px 3px rgba(0, 0, 0, 0.168);
+      cursor: pointer;
+    }
+    .notescreen-wrapper{
+      padding-top: 5vh;
+    }
+  
+    .back-button{
+      top: 3vh;
+      left: 1.6vw;
+    }
+  }
+  .back-button{
+    height: 35px;
+    width: 35px;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50px;
+    display: flex;
+    position: fixed;
+    top: 10.2vh;
+    left: 1vw;
+    cursor:pointer;
+    border: 0;
+    background-color: #fff;
+    box-shadow: 0px 0px 3px rgba(0, 0, 0, 0.084), 0px 2px 3px rgba(0, 0, 0, 0.168);
+  }
+  
+  .back-button svg{
+    width: 20px;
+    height: 20px;
+  }

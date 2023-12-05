@@ -4,15 +4,16 @@ import EditNote from "./EditNote";
 import "./Note.css";
 import NoteScreen from "./NoteScreen";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
-import { Link } from "react-router-dom";
+import { Link, useNavigate  } from "react-router-dom";
 import axios from "axios";
 import Card from "./cards/Card";
-import TreePage from "./Tree/TreePage.js"
+// import TreePage from "./Tree/TreePage.js"
+import Tree from "./Tree/Tree.js";
 import Navbar from "./Navbar.js"
 
 
 
-function ParentNote({Notelists,setisInside}) {
+function ParentNote({Notelists,setNotelists,setEnd}) {
   
   
   console.log(Notelists)
@@ -25,7 +26,7 @@ function ParentNote({Notelists,setisInside}) {
           {
             Notelists.map((item,index) =>(
              
-              <li key = {item._id} ><Card data={item} index ={index} setisInside = {setisInside}/> </li>
+              <li key = {item._id} ><Card data={item} index ={index} setdt = {setNotelists} setEnd={setEnd}/> </li>
      
             ))
           }
@@ -43,14 +44,15 @@ const Note = ({ setisLogin }) => {
     localStorage.clear();
     setisLogin(false);
   };
-   
+  const navigate = useNavigate()
 
   var [Notelists, setNotelists] = useState([]);
-  var [isInside, setisInside] = useState(false);
-  console.log(isInside)
+  var [endId, setEnd] = useState("1");
+  // console.log(isInside)
   // var [details, setdetails] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
+
   
   useEffect(
     () => async () => {
@@ -103,7 +105,7 @@ const Note = ({ setisLogin }) => {
 
   
   
-  if (loading)return (<div>Loading....</div>) // Display a loading message or spinner
+  // if (loading)return (<div>Loading....</div>) // Display a loading message or spinner
   // if(error)return <div> {erro}</div>
   function handleClick(){
     var myDiv = document.getElementById("cross");
@@ -112,10 +114,12 @@ const Note = ({ setisLogin }) => {
     myDiv.classList.add("wrapper");
 
   }
+  console.log(endId, " in NOte")
 
   return (
     <div className = "home">
-    <Navbar/>
+    <Navbar setisLogin={setisLogin}/>
+    
 
       {/* <section>
         <div className='child-note-list'>
@@ -134,30 +138,28 @@ const Note = ({ setisLogin }) => {
 
         </div>
       </section> */}
+
       <Routes>
-        <Route path = '/' exact element = {<ParentNote Notelists={Notelists} setisInside = {setisInside}/>}/>
-        <Route path='/Tree' exact element={<TreePage />} />
-        <Route path='/note/:id' exact element={<NoteScreen  />}  />
-        <Route path='/edit/:id' exact element={<EditNote/>}  />
+      <Route path = '/' exact element = {<ParentNote Notelists={Notelists} setNotelists={setNotelists} setEnd={setEnd}/>}/>
+        <Route path='/Tree/:id' exact element={(endId == "1")?<>END ID NULL</> :<Tree endId = {endId} />} />
+        <Route path='/note/:id' exact element={<NoteScreen  setEnd={setEnd}/>}  />
+        {/* <Route path='/edit/:id' exact element={<EditNote/>}  /> */}
 
       </Routes>
-      <AddNote isInside = {isInside} setNotelists={setNotelists}/>
+      <AddNote setNotelists={setNotelists}/>
       <section>
-        <Link className="logoutbtn" 
-          to='/'
-          onClick={() => {
-            logoutSubmit();
-          }}>
-          {" "}
-          Logout
-        </Link>
+
+      
+     
+
+
+
       </section>
-      <div>
+     <div>
       <svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="50" height="50" viewBox="0 0 40 40" className="plusbtn" id="plus" onClick={handleClick}>
 <path fill="#98ccfd" d="M20,38.5C9.799,38.5,1.5,30.201,1.5,20S9.799,1.5,20,1.5S38.5,9.799,38.5,20S30.201,38.5,20,38.5z"></path><path fill="#4788c7" d="M20,2c9.925,0,18,8.075,18,18s-8.075,18-18,18S2,29.925,2,20S10.075,2,20,2 M20,1 C9.507,1,1,9.507,1,20s8.507,19,19,19s19-8.507,19-19S30.493,1,20,1L20,1z"></path><g><path fill="#fff" d="M30 18L22 18 22 10 18 10 18 18 10 18 10 22 18 22 18 30 22 30 22 22 30 22z"></path></g>
 </svg>
       </div>
-
 
     </div>
   );

@@ -5,7 +5,7 @@ import React, { useState } from 'react';
  // Action to add a note
  import { useParams } from 'react-router-dom';
 
-const AddNote = ({isInside,setNotelists}) => {
+const AddNote = ({setNotelists}) => {
   // const dispatch = useDispatch();
   const [note, setNote] = useState({title:"",content:""});
   const onChangeInput  = e =>{
@@ -81,16 +81,7 @@ const AddNote = ({isInside,setNotelists}) => {
             // onChange={(e) => setTitle(e.target.value)}
           />
         </div>
-        <div>
-          {/* <label>Content:</label> */}
-          <textarea className='content-area'
-          name='content'
-            placeholder="content:"
-            // onChange={(e) => setContent(e.target.value)}
-            onChange = {onChangeInput}
-            value={note.content}
-          />
-        </div>
+       
         <button className='addnote-btn' onClick = {handleClick} type="submit" >Add Note</button>
       </form>
     </div>

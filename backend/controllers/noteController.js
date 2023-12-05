@@ -58,7 +58,7 @@ export const noteControl = {
         { title, content },
         { new: true }
       );
-
+        updatedNote.save()
       if (!updatedNote) {
         return res.status(404).json({ message: 'Note not found' });
       }
@@ -193,11 +193,15 @@ export const noteControl = {
 
   },
   notesOfaUser: async (req, res) => {
-    var user = res.user;
+
+    const {id} = req.params;
     let rarray = [];
-    console.log(user.id , " in note of allUsers")
-    const temp_user = await UserM.findById(user.id).exec();
-    console.log(temp_user)
+
+    const temp_note = await Note.findById(id).exec();
+    console.log(temp_note)
+
+    //check the error
+    rarray.push(temp_note)
 
     // Recursive function to fetch all children until leaf nodes
     async function fetchAllChildren(noteId, allChildren = []) {
@@ -218,12 +222,12 @@ export const noteControl = {
     }
 
     // Example usage: Fetching all children of a specific note
-    console.log(temp_user.notes[0])
-    for (const c in temp_user.notes){
+    console.log(temp_note.children[0])
+    for (const c in temp_note.children){
       // const mar = 
       console.log(c,"insied for loop")
-      // rarray.push(temp_user.notes[c]);
-      const noteIdToFetch = temp_user.notes[c] // Replace with the ID of the note you want to start from
+      // rarray.push(temp_note.children[c]);
+      const noteIdToFetch = temp_note.children[c] // Replace with the ID of the note you want to start from
 
       await fetchAllChildren(noteIdToFetch)
         .then((allChildren) => {
@@ -244,6 +248,18 @@ export const noteControl = {
     }
     console.log(rarray);
     return res.status(200).json({data:rarray});
+  },
+  removeOneNote: async(req,res)=>{
+    try {
+      const {id} =  req.params;
+    const user = await Note.findByIdAndUpdate(id,req.body);
+    const a = user.save();
+    res.send(a);
+    } catch (error) {
+      res.send(error)
+    }
+    
+    
   }
 
 }

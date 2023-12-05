@@ -1,96 +1,34 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
-
-const SelectDates = () => {
-  const [startOptions, setStartOptions] = useState([]);
-  const [endOptions, setEndOptions] = useState([]);
-  const [loading, setLoading] = useState(true);
-  const [globalArray, setGlobalArray] = useState([]);
-  // const [selectedStartOption, setSelectedStartOption] = useState('');
-  // const [selectedEndOption, setSelectedEndOption] = useState('');
-  const [selectedOptions ,setSelectedOptions ] = useState({
-    start:'',
-    end:''
-  })
-  useEffect(() => {
-    async function getAllData() {
-      const token = localStorage.getItem('token Store');
-      try {
-        const user_notes = await axios.get('http://localhost:5000/route/note2/getall', {
-          headers: { Authorization: token },
-        });
-
-        setGlobalArray(user_notes.data.data);
-        setLoading(false);
-      } catch (error) {
-        console.log(error);
+import './tree.css'
+const SelectDates = ({dat,index}) => {
+  
+  useEffect(()=>{
+    function iconshow(index){
+      var a = document.getElementById('arrow-icn');
+      console.log(index)
+      if(index == 0){
+        a.style.display = "none";
+      }
+      else{
+        a.style.display = "block";
       }
     }
+    iconshow(index);
 
-    getAllData();
-  }, []);
-
-  useEffect(() => {
-    if (!loading) {
-      setStartOptions(generateOptions(0, globalArray.length));
-      setEndOptions(generateOptions(0, globalArray.length));
-    }
-  }, [loading, globalArray]);
-
-  const generateOptions = (start, end) => {
-    const options = [];
-    for (let i = start; i < end; i++) {
-      options.push(
-        <option key={globalArray[i]._id} value={globalArray[i]._id}>
-          {globalArray[i].title}
-        </option>
-      );
-    }
-    return options;
-  };
-
-  const handleChange = (event) => {
-    const {name,value} = event.target;
-    setSelectedOptions({...selectedOptions,[name]:value});
-    console.log(selectedOptions)
-
-    // console.log(selectedOptions)
-    // You can perform any necessary action here based on the selected start option
-  };
-  const onButton = async(selectedOptions = selectedOptions)=>{
-        try {
-          console.log(selectedOptions)
-        
-          const dataRequested = await axios.get(`http://localhost:5000/route/tree/data/${selectedOptions.start}/${selectedOptions.end}`)
-          console.log(dataRequested)
-        } catch (error) {
-          console.log(error)
-        }
-  }
-  // const handleEndChange = (event) => {
-  //   event.preventDefault()
-  //   setSelectedEndOption(event.target.value);
-  //   console.log(selectedStartOption)
-  //   console.log(selectedEndOption)
-
-  //   // You can perform any necessary action here based on the selected end option
-  // };
-
-  if (loading) return <div>Loading...</div>;
-
+  },[])
   return (
-    <div>
-      <label htmlFor="startDropdown">Start:</label>
-      <select id="startDropdown" name='start' value={selectedOptions.start} onChange={handleChange}>
-        {startOptions}
-      </select>
+    <div className='display-tree-wrapper'>
+        <div className="arrow-icon" id = "arrow-icn">
+          <svg class="w-4 h-10 text-gray-800 dark:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 10 14">
+            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 1v12m0 0 4-4m-4 4L1 9" />
+          </svg>
+        </div>
 
-      <label htmlFor="endDropdown">End:</label>
-      <select id="endDropdown" name='end' value={selectedOptions.end} onChange={handleChange}>
-        {endOptions}
-      </select>
-      <button type='button' onClick={()=>onButton(selectedOptions)}> Button </button>
-    </div>
+        <div className="tree-component">
+          <p>{dat.title}</p>
+        </div>
+      </div>
   );
 };
 

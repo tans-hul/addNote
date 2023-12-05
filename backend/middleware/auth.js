@@ -7,6 +7,7 @@ export const auth = async(req,res,next)=>{
     // console.log("user")
     try {
         const token = req.header("Authorization")
+        console.log(req.body.headers)
         if(!token)  return res.status(400).json({message: "Invalid Auth"})
 
         jwt.verify(token,"secretKey",(err,user)=>{

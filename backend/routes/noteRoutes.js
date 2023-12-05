@@ -14,6 +14,7 @@ router.post('/addparent', auth ,noteControl.createParentNote)
 // POST - Create a note
 router.get('/allNotes',auth,noteControl.notesOfaUser)
 router.put('/pushchild/:id',noteControl.pushChild)
+router.put('/remchild/:id',noteControl.removeOneNote)
 router.post('/:id', noteControl.createNote)
     router.get('/:id',noteControl.getSingleNote)
     router.put('/:id', noteControl.updateNote)
