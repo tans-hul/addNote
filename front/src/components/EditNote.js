@@ -7,7 +7,6 @@ function EditNote({ dat ,setState}) {
   // const req = useParams()
   // const {id} = req.params
   const id = dat._id
-
   const [note, setNote] = useState({
     title: dat.title,
     content: dat.content
@@ -24,12 +23,10 @@ function EditNote({ dat ,setState}) {
     try {
       let m = await axios.put(`https://unimon-add-notes.onrender.com/route/note/${id}`, note)
       // setState({...data,{title:note.title,content:note.content}})
-      if(!m) console.log(m)
-      const newState = {...data};
+      const newState = {...state};
       newState.title = note.title
       newState.content =note.content;
       setState(newState)
-      
       return;
 
     }
