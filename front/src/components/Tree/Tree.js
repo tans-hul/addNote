@@ -27,7 +27,7 @@ const Tree = ({endId}) => {
     }
     getData(id,endId)
 
-},[id])
+},[endId,token])
     console.log(arr);
 
   return (

@@ -101,12 +101,12 @@ const Card = ({ data, index, setdt,setEnd }) => {
         const par = await axios.get(`https://unimon-add-notes.onrender.com/route/note/${state.parent}`)
         // Element to remove
         console.log(par.data, 'in else consoling parent')
-        var c = par.data.children
+        var f = par.data.children
         const elementToRemove = state._id;
         console.log(elementToRemove)
-        c = c.filter(item => item !== elementToRemove);
-        console.log(c)
-        const rem = await axios.put(`https://unimon-add-notes.onrender.com/route/note/remchild/${state.parent}`, { children: c });
+        f = f.filter(item => item !== elementToRemove);
+        console.log(f)
+        const rem = await axios.put(`https://unimon-add-notes.onrender.com/route/note/remchild/${state.parent}`, { children: f });
         console.log(rem)
       }
 
@@ -124,13 +124,7 @@ const Card = ({ data, index, setdt,setEnd }) => {
 
 
   }
-  function handleClick() {
-    var myDiv = document.getElementById("cross");
-    // myDiv.classList.remove("wrapper");
-    myDiv.classList.remove("wrapper-close");
-    myDiv.classList.add("wrapper");
-
-  }
+  
   async function handleEditClick(e) {
     // e.preventDefault()
     
