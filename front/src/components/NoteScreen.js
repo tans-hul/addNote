@@ -19,7 +19,7 @@ const NoteScreen = ({setEnd}) => {
             // e.preventDefault()
             console.log(dt, "inside use Effect")
             const getData = async (id) => {
-                const isv = await axios.get(`http://localhost:5000/route/note/${id}`)
+                const isv = await axios.get(`https://unimon-add-notes.onrender.com/route/note/${id}`)
                 // console.log(isv.data)
                 var M = await isv.data.children;
                 if (!M) {
@@ -31,7 +31,7 @@ const NoteScreen = ({setEnd}) => {
 
                 M.map(async (noteId) => {
                     const res = await axios.get(
-                        `http://localhost:5000/route/note/${noteId}`,
+                        `https://unimon-add-notes.onrender.com/route/note/${noteId}`,
                     );
 
 

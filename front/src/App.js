@@ -30,7 +30,7 @@ const App = () => {
     // console.log("token: " + token)
     if(token) {
       
-      const isVerified =await axios.get('http://localhost:5000/route/user/verify',{
+      const isVerified =await axios.get('https://unimon-add-notes.onrender.com/route/user/verify',{
         headers:{Authorization: token}
       })
       // console.log(isVerified.data)

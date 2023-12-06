@@ -23,7 +23,7 @@ function EditNote({ dat ,setState}) {
     // e.preventDefault();
 
     try {
-      let m = await axios.put(`http://localhost:5000/route/note/${id}`, note)
+      let m = await axios.put(`https://unimon-add-notes.onrender.com/route/note/${id}`, note)
       // setState({...data,{title:note.title,content:note.content}})
       const newState = {...data};
       newState.title = note.title

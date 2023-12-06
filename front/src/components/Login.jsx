@@ -21,7 +21,7 @@ const Login = ({setisLogin}) => {
     const registerSubmit = async e =>{
         // e.preventDefault();
         try {
-            let res = await axios.post('http://localhost:5000/route/user/register',{
+            let res = await axios.post('https://unimon-add-notes.onrender.com/route/user/register',{
                 username:user.username,
                 password : user.password
             })
@@ -37,7 +37,7 @@ const Login = ({setisLogin}) => {
     const loginSubmit = async e =>{
         // e.preventDefault();
         try {
-            let res = await axios.post('http://localhost:5000/route/user/signin',{
+            let res = await axios.post('https://unimon-add-notes.onrender.com/route/user/signin',{
                 username:user.username,
                 password : user.password
             })

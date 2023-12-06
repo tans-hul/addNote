@@ -10,7 +10,7 @@ const Tree = ({endId}) => {
 
     useEffect(()=>{
         async function getData(id,endId){
-            const res = await axios.get(`http://localhost:5000/route/tree/data/${id}/${endId}`,
+            const res = await axios.get(`https://unimon-add-notes.onrender.com/route/tree/data/${id}/${endId}`,
                 {
                     headers: { Authorization: token },
                   }
@@ -19,7 +19,7 @@ const Tree = ({endId}) => {
             console.log(array)
             await setArr([]);
             array.map( async (item,index)=>{
-                const r = await axios.get(`http://localhost:5000/route/note/${item}`)
+                const r = await axios.get(`https://unimon-add-notes.onrender.com/route/note/${item}`)
                 console.log(r.data);
                 setArr( p =>p.concat(r.data));
             });

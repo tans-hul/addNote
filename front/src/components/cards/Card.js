@@ -51,7 +51,7 @@ const Card = ({ data, index, setdt,setEnd }) => {
   //delete use index to change
   useEffect(() => {
     async function getDropdownArray(id) {
-      const res = await axios.get(`http://localhost:5000/route/note2/getall/${id}`);
+      const res = await axios.get(`https://unimon-add-notes.onrender.com/route/note2/getall/${id}`);
       const c = res.data.data;
       setdDown(["--"])
       c.map(async (item) => {
@@ -81,14 +81,14 @@ const Card = ({ data, index, setdt,setEnd }) => {
         const token = localStorage.getItem("token Store");
         console.log(token);
         if (token) {
-          const par = await axios.get(`http://localhost:5000/route/user/userinfo`,
+          const par = await axios.get(`https://unimon-add-notes.onrender.com/route/user/userinfo`,
             {
               headers: { Authorization: token },
             })
           var c = par.data.notes
           const elementToRemove = state._id;
           c = c.filter(item => item !== elementToRemove);
-          const rem = await axios.put(`http://localhost:5000/route/user/updateUser`,
+          const rem = await axios.put(`https://unimon-add-notes.onrender.com/route/user/updateUser`,
 
 
             { notes: c },
@@ -108,7 +108,7 @@ const Card = ({ data, index, setdt,setEnd }) => {
 
       }
       else {
-        const par = await axios.get(`http://localhost:5000/route/note/${state.parent}`)
+        const par = await axios.get(`https://unimon-add-notes.onrender.com/route/note/${state.parent}`)
         // Element to remove
         console.log(par.data, 'in else consoling parent')
         var c = par.data.children
@@ -116,11 +116,11 @@ const Card = ({ data, index, setdt,setEnd }) => {
         console.log(elementToRemove)
         c = c.filter(item => item !== elementToRemove);
         console.log(c)
-        const rem = await axios.put(`http://localhost:5000/route/note/remchild/${state.parent}`, { children: c });
+        const rem = await axios.put(`https://unimon-add-notes.onrender.com/route/note/remchild/${state.parent}`, { children: c });
         console.log(rem)
       }
 
-      const res = await axios.delete(`http://localhost:5000/route/note/${state._id}`);
+      const res = await axios.delete(`https://unimon-add-notes.onrender.com/route/note/${state._id}`);
       setdt(prevItems => prevItems.filter(item => item._id !== state._id))
       console.log(res.data, "deleted state")
       // var d = res.state

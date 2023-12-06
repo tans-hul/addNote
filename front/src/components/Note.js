@@ -63,7 +63,7 @@ const Note = ({ setisLogin }) => {
 
         if (token) {
           const isv = await axios.get(
-            "http://localhost:5000/route/user/userinfo",
+            "https://unimon-add-notes.onrender.com/route/user/userinfo",
             {
               headers: { Authorization: token },
             },
@@ -73,7 +73,7 @@ const Note = ({ setisLogin }) => {
               var data = isv.data.notes;
               data.map(async (noteId) => {
                 const res = await axios.get(
-                  `http://localhost:5000/route/note/${noteId}`,
+                  `https://unimon-add-notes.onrender.com/route/note/${noteId}`,
                 );
                 setNotelists(prevData => [...prevData, res.data])
                 console.log(res.data, " inside the map")

@@ -21,7 +21,7 @@ const AddNoteChild = ({noteId, setdt}) => {
     e.preventDefault();
     //post method
    try {
-    let res = await axios.post(`http://localhost:5000/route/note/${noteId}`,{"title":note.title, "content":note.content,parent:noteId})
+    let res = await axios.post(`https://unimon-add-notes.onrender.com/route/note/${noteId}`,{"title":note.title, "content":note.content,parent:noteId})
           
     console.log(res.data , " in Add NOte child");
 
@@ -30,7 +30,7 @@ const AddNoteChild = ({noteId, setdt}) => {
     var child_id_data = {
         "child":c.data._id
     }
-    var add_child = await axios.put(`http://localhost:5000/route/note/pushchild/${noteId}`,child_id_data)
+    var add_child = await axios.put(`https://unimon-add-notes.onrender.com/route/note/pushchild/${noteId}`,child_id_data)
     // const {savedNote,u} = res.data;
     // console.log(res.data)
     console.log(add_child," add child");
