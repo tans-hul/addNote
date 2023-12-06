@@ -93,11 +93,4 @@
     }
   }
   
-  @media screen and (max-width: 450px){
-    .add-note {
-      height: fit-content;
-      max-width: 90vw;
-      width: 85vw;
-      position: relative;
-    }
-  }
+ 

@@ -3,10 +3,12 @@ import express from 'express';
 import mongoose from 'mongoose';
 import mainRouter from './routes/index.js';
 import cors from 'cors'
+import dotenv from 'dotenv'
 const app = express();
-
+dotenv.config()
+const uri = process.env.URI
 // Connect to MongoDB
-mongoose.connect('mongodb://127.0.0.1:27017/yourDBName', {
+mongoose.connect(uri, {
   useNewUrlParser: true,
   useUnifiedTopology: true,
 });

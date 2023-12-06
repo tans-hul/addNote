@@ -25,11 +25,7 @@
   font-size: calc(10px + 2vmin);
   color: white;
 }
-button{
-  width: auto;
-  height: 30px;
-  background-color: #282c34;
-}
+
 
 .App-link {
   color: #61dafb;

@@ -2,6 +2,7 @@ import axios from 'axios'
 import React, { useEffect, useState } from 'react'
 import { useParams } from 'react-router-dom'
 import SelectDates from './SelectDates.js'
+import './tree.css'
 const Tree = ({endId}) => {
     const  {id} = useParams()
     const [arr,setArr] = useState([])
