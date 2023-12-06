@@ -7,12 +7,11 @@ function EditNote({ dat ,setState}) {
   // const req = useParams()
   // const {id} = req.params
   const id = dat._id
-  const [data, setData] = useState({
+
+  const [note, setNote] = useState({
     title: dat.title,
     content: dat.content
-  })
-
-  const [note, setNote] = useState(data);
+  });
   const onChangeInput = e => {
     console.log(note)
     const { name, value } = e.target;
@@ -25,10 +24,12 @@ function EditNote({ dat ,setState}) {
     try {
       let m = await axios.put(`https://unimon-add-notes.onrender.com/route/note/${id}`, note)
       // setState({...data,{title:note.title,content:note.content}})
+      if(!m) console.log(m)
       const newState = {...data};
       newState.title = note.title
       newState.content =note.content;
       setState(newState)
+      
       return;
 
     }

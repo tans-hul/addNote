@@ -51,6 +51,7 @@ const Login = ({setisLogin}) => {
             
         }
     }
+    
     return (
         <>
         {/* <section>
@@ -124,6 +125,7 @@ const Login = ({setisLogin}) => {
 </div>
 {/* <button className="button3">Forgot Password</button> */}
 </form>
+<p>{err}</p>
 </>
     )
 }

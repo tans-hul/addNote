@@ -3,7 +3,6 @@ import axios from 'axios';
 import "./addnote.css"
 import React, { useState } from 'react';
  // Action to add a note
- import { useParams } from 'react-router-dom';
 
 const AddNote = ({setNotelists}) => {
   // const dispatch = useDispatch();
@@ -38,7 +37,7 @@ const AddNote = ({setNotelists}) => {
       headers:{Authorization: token}
     })
     
-    // console.log(m);
+    console.log(m);
 
     setNote({title:'', content:''});
     var myDiv = document.getElementById("cross");

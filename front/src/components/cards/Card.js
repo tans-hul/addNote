@@ -3,7 +3,6 @@ import './Card.css'
 import axios from 'axios';
 import { Link } from 'react-router-dom';
 import EditNote from '../EditNote';
-import Dropdown from '../Dropdown';
 
 const colors = [
   {
@@ -44,7 +43,6 @@ const colors = [
 ];
 const Card = ({ data, index, setdt,setEnd }) => {
   const [state, setState] = useState(data);
-  const [isl, setisl] = useState(false)
   const [dDown, setdDown] = useState(["--"])
   // const [End, setEnd] = useState(null);
 
@@ -60,24 +58,16 @@ const Card = ({ data, index, setdt,setEnd }) => {
       // setdDown(re=>[...re,res.data.data]);
     }
     getDropdownArray(data._id)
-  }, [index])
+  }, [index,data._id])
   console.log(dDown);
 
-  function changeColor(e) {
-    e.target.style.color = colors[index % 5].hoverColor;
-  }
-  // console.log(data)
-
-  function actualColor(e) {
-    e.target.style.color = colors[index % 5].btnColor;
-  }
 
   const OnDelete = async e => {
     try {
       e.preventDefault();
       console.log(state.parent)
 
-      if (state.parent == null) {
+      if (state.parent === null) {
         const token = localStorage.getItem("token Store");
         console.log(token);
         if (token) {
@@ -143,7 +133,7 @@ const Card = ({ data, index, setdt,setEnd }) => {
   }
   async function handleEditClick(e) {
     // e.preventDefault()
-    await setisl(true)
+    
     var myDiv = document.getElementById("edit");
     // myDiv.classList.remove("wrapper");
     myDiv.classList.remove("edit-wrapper-close");
@@ -181,7 +171,7 @@ const Card = ({ data, index, setdt,setEnd }) => {
             {/*to map*/}
           { 
             dDown.map((item,index)=>{
-              if(index == 0)return(<option className='drop-option' value = {null} key={index}  >--</option>)
+              if(index === 0)return(<option className='drop-option' value = {null} key={index}  >--</option>)
               else return<option className='drop-option' value={item._id} key={index} > {item.title}</option>
 
             })

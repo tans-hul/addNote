@@ -2,9 +2,8 @@ import React, { useEffect, useState } from 'react'
 import axios from 'axios'
 import Card from './cards/Card'
 import AddNoteChild from './AddNoteChild'
-import { BrowserRouter as Router, Route, Routes, } from "react-router-dom";
 import './addnotechild.css'
-import { useParams, Link, useNavigate } from 'react-router-dom'
+import { useParams, useNavigate } from 'react-router-dom'
 const NoteScreen = ({setEnd}) => {
 
     const { id } = useParams();
@@ -41,7 +40,7 @@ const NoteScreen = ({setEnd}) => {
             }
 
             getData(id);
-            if (dt == []) {
+            if (dt === []) {
                 setError("empty array")
                 setLoading(false)
             }

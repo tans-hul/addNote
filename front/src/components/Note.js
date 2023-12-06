@@ -1,10 +1,9 @@
 import React, { useEffect, useState } from "react";
 import AddNote from "./AddNote";
-import EditNote from "./EditNote";
 import "./Note.css";
 import NoteScreen from "./NoteScreen";
-import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
-import { Link, useNavigate  } from "react-router-dom";
+import { Route, Routes } from "react-router-dom";
+import {  useNavigate  } from "react-router-dom";
 import axios from "axios";
 import Card from "./cards/Card";
 // import TreePage from "./Tree/TreePage.js"
@@ -40,11 +39,7 @@ function ParentNote({Notelists,setNotelists,setEnd}) {
 }
 
 const Note = ({ setisLogin }) => {
-  const logoutSubmit = async () => {
-    localStorage.clear();
-    setisLogin(false);
-  };
-  const navigate = useNavigate()
+
 
   var [Notelists, setNotelists] = useState([]);
   var [endId, setEnd] = useState("1");
@@ -119,6 +114,7 @@ const Note = ({ setisLogin }) => {
   return (
     <div className = "home">
     <Navbar setisLogin={setisLogin}/>
+    <div>{error}</div>
     
 
       {/* <section>
@@ -141,7 +137,7 @@ const Note = ({ setisLogin }) => {
 
       <Routes>
       <Route path = '/' exact element = {<ParentNote Notelists={Notelists} setNotelists={setNotelists} setEnd={setEnd}/>}/>
-        <Route path='/Tree/:id' exact element={(endId == "1")?<>END ID NULL</> :<Tree endId = {endId} />} />
+        <Route path='/Tree/:id' exact element={(endId === "1")?<>END ID NULL</> :<Tree endId = {endId} />} />
         <Route path='/note/:id' exact element={<NoteScreen  setEnd={setEnd}/>}  />
         {/* <Route path='/edit/:id' exact element={<EditNote/>}  /> */}
 

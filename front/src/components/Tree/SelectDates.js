@@ -1,5 +1,4 @@
-import React, { useState, useEffect } from 'react';
-import axios from 'axios';
+import React, { useEffect } from 'react';
 import './tree.css'
 const SelectDates = ({dat,index}) => {
   
@@ -7,7 +6,7 @@ const SelectDates = ({dat,index}) => {
     function iconshow(index){
       var a = document.getElementById('arrow-icn');
       console.log(index)
-      if(index == 0){
+      if(index === 0){
         a.style.display = "none";
       }
       else{
@@ -16,7 +15,7 @@ const SelectDates = ({dat,index}) => {
     }
     iconshow(index);
 
-  },[])
+  },[index])
   return (
     <div className='display-tree-wrapper'>
         <div className="arrow-icon" id = "arrow-icn">
