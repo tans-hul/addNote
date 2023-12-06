@@ -21,7 +21,7 @@ const AddNote = ({setNotelists}) => {
     //post method
    try {
     const token =  localStorage.getItem('token Store');
-    let res = await axios.post('http://localhost:5000/route/note/addparent',{"title":note.title, "content":note.content},
+    let res = await axios.post('https://unimon-add-notes.onrender.com/route/note/addparent',{"title":note.title, "content":note.content},
                 {
                   headers:{Authorization: token}
                 }
@@ -33,7 +33,7 @@ const AddNote = ({setNotelists}) => {
     setNotelists(prevdata => [...prevdata,res.data.savedNote])
    ///setllist is changing and showing but api call is not being made
    
-    let m = await axios.put('http://localhost:5000/route/user/addnote',res.data,
+    let m = await axios.put('https://unimon-add-notes.onrender.com/route/user/addnote',res.data,
     {
       headers:{Authorization: token}
     })
