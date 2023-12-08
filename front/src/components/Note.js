@@ -49,51 +49,53 @@ const Note = ({ setisLogin }) => {
   const [error, setError] = useState(null);
 
   
-  useEffect(
-    () => async () => {
-      try {
-        // console.log(loading)
-
-        const token = localStorage.getItem("token Store");
-
-        if (token) {
-          const isv = await axios.get(
-            "https://unimon-add-notes.onrender.com/route/user/userinfo",
-            {
-              headers: { Authorization: token },
-            },
-          ).then(
-            (isv)=>{
-              console.log(isv);
-              var data = isv.data.notes;
-              data.map(async (noteId) => {
-                const res = await axios.get(
-                  `https://unimon-add-notes.onrender.com/route/note/${noteId}`,
-                );
-                setNotelists(prevData => [...prevData, res.data])
-                console.log(res.data, " inside the map")
-
-                console.log(Notelists, " in maps of notes")
-              });
-              setLoading(false)
-              console.log(loading)
-              const entries = Object.keys(Notelists.at());
-              console.log(entries, "values in entries")
-              console.log(Notelists, " after useEffect call");
-            }
-          );
+  useEffect(() => {
+      async function callAapi(){
+        try {
+          // console.log(loading)
+  
+          const token = localStorage.getItem("token Store");
+  
+          if (token) {
+            const isv = await axios.get(
+              "https://unimon-add-notes.onrender.com/route/user/userinfo",
+              {
+                headers: { Authorization: token },
+              },
+            ).then(
+              (isv)=>{
+                console.log(isv);
+                var data = isv.data.notes;
+                data.map(async (noteId) => {
+                  const res = await axios.get(
+                    `https://unimon-add-notes.onrender.com/route/note/${noteId}`,
+                  );
+                  setNotelists(prevData => [...prevData, res.data])
+                  console.log(res.data, " inside the map")
+  
+                  console.log(Notelists, " in maps of notes")
+                });
+                setLoading(false)
+                console.log(loading)
+                const entries = Object.keys(Notelists.at());
+                console.log(entries, "values in entries")
+                console.log(Notelists, " after useEffect call");
+              }
+            );
+          }
+  
         }
-
-        // console.log(details)
-      }
-      catch (error) {
-        setError(error);
+        catch (error) {
+          setError(error);
+          
+          setLoading(false);
         
-        setLoading(false);
-      
-      }finally {
-        setLoading(false);
+        }finally {
+          setLoading(false);
+        }
       }
+      callAapi();
+      
     },
     [],
   );
@@ -104,7 +106,6 @@ const Note = ({ setisLogin }) => {
   // if(error)return <div> {erro}</div>
   function handleClick(){
     var myDiv = document.getElementById("cross");
-    // myDiv.classList.remove("wrapper");
     myDiv.classList.remove("wrapper-close");
     myDiv.classList.add("wrapper");
 
@@ -117,29 +118,12 @@ const Note = ({ setisLogin }) => {
     <div>{error}</div>
     
 
-      {/* <section>
-        <div className='child-note-list'>
-          Notes
-          <ul>
-          {
-            Notelists.map((item,index) =>(
-              <Link to={`/note/${item._id}`}>
-              <li key = {item._id} ><Card data={item} index ={index}/> </li>
-              </Link>
-            ))
-          }
-</ul>
-
-          
-
-        </div>
-      </section> */}
+    
 
       <Routes>
       <Route path = '/' exact element = {<ParentNote Notelists={Notelists} setNotelists={setNotelists} setEnd={setEnd}/>}/>
         <Route path='/Tree/:id' exact element={(endId === "1")?<>END ID NULL</> :<Tree endId = {endId} />} />
         <Route path='/note/:id' exact element={<NoteScreen  setEnd={setEnd}/>}  />
-        {/* <Route path='/edit/:id' exact element={<EditNote/>}  /> */}
 
       </Routes>
       <AddNote setNotelists={setNotelists}/>
